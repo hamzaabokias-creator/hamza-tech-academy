@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="تحميل جي تي اي, تحميل العاب, افضل تطبيقات, تعلم سي اس اس, تعلم تاغات سي اس اس, اهم تاغات سي اس اس, HTML, CSS, JavaScript, GTA 5 RP Mobile">
+    <meta name="description" content="أكاديمية حمزة للمعلوماتية وتحميل أفضل الألعاب.">
+    <title>Hamza Tech & Games</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* الدلع البصري والألوان */
+        :root { --main: #00ff41; --bg: #0a0a0a; --card: rgba(25, 25, 25, 0.8); }
+        * { box-sizing: border-box; margin: 0; padding: 0; transition: all 0.3s ease; }
+        body { font-family: 'Roboto', 'Cairo', sans-serif; background-color: var(--bg); color: white; overflow-x: hidden; }
+        
+        /* شريط التنقل */
+        header { background: rgba(0, 0, 0, 0.9); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--main); box-shadow: 0 0 15px rgba(0,255,65,0.2); }
+        .logo { font-size: 24px; font-weight: bold; color: var(--main); cursor: pointer; }
+        .lang-select { background: #222; color: var(--main); border: 1px solid var(--main); padding: 5px 10px; border-radius: 5px; outline: none; font-family: 'Cairo'; cursor: pointer; }
+        
+        /* الحاوية ونظام الصفحات */
+        .container { max-width: 900px; margin: 40px auto; padding: 20px; }
+        .page { display: none; animation: fadeIn 0.5s ease; }
+        .page.active { display: block; }
+        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* البطاقات والأزرار */
+        .card { background: var(--card); padding: 30px; border-radius: 15px; text-align: center; border: 1px solid #333; backdrop-filter: blur(10px); margin-bottom: 20px; }
+        .card:hover { border-color: var(--main); box-shadow: 0 0 20px rgba(0,255,65,0.1); }
+        h1, h2 { color: var(--main); margin-bottom: 15px; }
+        p { color: #ccc; margin-bottom: 20px; line-height: 1.6; }
+        
+        .btn { display: inline-block; background: transparent; color: var(--main); border: 2px solid var(--main); padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 16px; cursor: pointer; text-transform: uppercase; margin: 10px; }
+        .btn:hover { background: var(--main); color: black; box-shadow: 0 0 15px var(--main); }
+        .back-btn { background: #333; color: white; border: none; padding: 8px 15px; margin-bottom: 20px; cursor: pointer; border-radius: 5px; }
+        .back-btn:hover { background: #555; }
+
+        /* جدول الدروس */
+        .table-container { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 14px; text-align: left; }
+        th, td { border: 1px solid #333; padding: 12px; }
+        th { background: var(--main); color: black; }
+        .category { background: #222; font-weight: bold; text-align: center; color: var(--main); }
+
+        /* شاشة حظر الـ VPN */
+        #vpn-block { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: #000; z-index: 9999; color: red; text-align: center; padding-top: 20%; font-family: Arial; }
+    </style>
+</head>
+<body>
+
+    <div id="vpn-block">
+        <h1>🚫 Access Denied</h1>
+        <p>VPN or Proxy connection detected. Please disable it to access the site.</p>
+    </div>
+
+    <header>
+        <div class="logo" onclick="nav('home')">Hamza<span style="color:white">Tech</span></div>
+        <select class="lang-select" id="langSwitcher" onchange="changeLang()">
+            <option value="en">English</option>
+            <option value="ar">العربية</option>
+            <option value="ru">Русский</option>
+        </select>
+    </header>
+
+    <div class="container">
+        
+        <div id="home" class="page active">
+            <div class="card">
+                <h1 class="tr" data-en="Welcome to Hamza Tech" data-ar="مرحباً بك في أكاديمية حمزة" data-ru="Добро пожаловать в Hamza Tech">Welcome to Hamza Tech</h1>
+                <p class="tr" data-en="Choose your destination below." data-ar="اختر وجهتك من الأسفل." data-ru="Выберите место назначения ниже.">Choose your destination below.</p>
+                
+                <button class="btn tr" onclick="nav('download')" data-en="🎮 Download Games" data-ar="🎮 تحميل الألعاب" data-ru="🎮 Скачать игры">🎮 Download Games</button>
+                <button class="btn tr" onclick="nav('courses')" data-en="💻 Learn Informatics" data-ar="💻 تعلم المعلوماتية" data-ru="💻 Изучать информатику">💻 Learn Informatics</button>
+            </div>
+        </div>
+
+        <div id="download" class="page">
+            <button class="back-btn tr" onclick="nav('home')" data-en="← Back" data-ar="← رجوع" data-ru="← Назад">← Back</button>
+            <div class="card">
+                <h2>GTA 5 Mobile RP</h2>
+                <p class="tr" data-en="Join the best Roleplay server. Fast download (100MB)." data-ar="انضم لأفضل سيرفر رول بلاي. تحميل سريع (100 ميجا)." data-ru="Присоединяйтесь к лучшему RP серверу. Быстрая загрузка (100 МБ).">Join the best Roleplay server. Fast download (100MB).</p>
+                
+                <a href="#" class="btn tr" data-en="Download Now" data-ar="تحميل الآن" data-ru="Скачать сейчас">Download Now</a>
+            </div>
+        </div>
+
+        <div id="courses" class="page">
+            <button class="back-btn tr" onclick="nav('home')" data-en="← Back" data-ar="← رجوع" data-ru="← Назад">← Back</button>
+            <div class="card">
+                <h2 class="tr" data-en="Available Courses" data-ar="الكورسات المتاحة" data-ru="Доступные курсы">Available Courses</h2>
+                <div style="text-align: left; background: #111; padding: 20px; border-radius: 8px; border-left: 4px solid var(--main);">
+                    <h3 style="color: white;">CSS Masterclass</h3>
+                    <p class="tr" data-en="Learn styling from zero to hero." data-ar="تعلم تصميم المواقع من الصفر." data-ru="Изучайте CSS с нуля.">Learn styling from zero to hero.</p>
+                    <button class="btn tr" onclick="nav('lesson1')" data-en="Start Lesson 1" data-ar="ابدأ الدرس الأول" data-ru="Начать урок 1">Start Lesson 1</button>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 25px; padding: 15px; border: 1px dashed var(--main); border-radius: 8px; background: rgba(0,255,65,0.05);">
+    <h3 class="tr" data-en="🚀 Stay tuned for upcoming lessons!" data-ar="🚀 انتظرونا في الدروس القادمة!" data-ru="🚀 Следите за обновлениями!">🚀 Stay tuned for upcoming lessons!</h3>
+    <p class="tr" data-en="C++ and JavaScript courses will be available soon." data-ar="سيتم إضافة كورسات C++ و JavaScript قريباً." data-ru="Скоро будут добавлены курсы по C++ и JavaScript.">C++ and JavaScript courses will be available soon.</p>
+</div>
+        </div>
+
+        <div id="lesson1" class="page">
+            <button class="back-btn tr" onclick="nav('courses')" data-en="← Back to Courses" data-ar="← العودة للكورسات" data-ru="← Назад к курсам">← Back to Courses</button>
+            <div class="card">
+                <h2 class="tr" data-en="Lesson 1: Essential CSS Properties" data-ar="الدرس الأول: أهم خصائص CSS" data-ru="Урок 1: Основные свойства CSS">Lesson 1: Essential CSS Properties</h2>
+                
+                <div class="table-container">
+                    <table>
+                        <tr><th>Property</th><th>Description / الوصف</th></tr>
+                        
+                        <tr><td colspan="2" class="category">Text & Typography (النصوص)</td></tr>
+                        <tr><td>color</td><td>تغيير لون النص</td></tr>
+                        <tr><td>font-size</td><td>تحديد حجم الخط</td></tr>
+                        <tr><td>text-align</td><td>محاذاة النص</td></tr>
+                        <tr><td>font-weight</td><td>سمك الخط</td></tr>
+                        <tr><td>line-height</td><td>ارتفاع السطر</td></tr>
+
+                        <tr><td colspan="2" class="category">Box Model (الصندوق)</td></tr>
+                        <tr><td>margin</td><td>المسافة الخارجية</td></tr>
+                        <tr><td>padding</td><td>المسافة الداخلية</td></tr>
+                        <tr><td>border</td><td>حدود العنصر</td></tr>
+                        <tr><td>border-radius</td><td>زوايا دائرية</td></tr>
+                        <tr><td>box-shadow</td><td>ظل العنصر</td></tr>
+
+                        <tr><td colspan="2" class="category">Layout (التموضع)</td></tr>
+                        <tr><td>display</td><td>طريقة العرض (flex, block)</td></tr>
+                        <tr><td>position</td><td>نوع التموضع (relative, absolute)</td></tr>
+                        <tr><td>z-index</td><td>ترتيب الطبقات</td></tr>
+                        <tr><td>justify-content</td><td>توزيع أفقي (Flex)</td></tr>
+                        <tr><td>align-items</td><td>توزيع عمودي (Flex)</td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // 1. نظام التنقل بين الصفحات (SPA Routing)
+        function nav(pageId) {
+            document.querySelectorAll('.page').forEach(el => el.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        // 2. نظام اللغات (ميكانيك الترجمة الفورية)
+        function changeLang() {
+            let lang = document.getElementById('langSwitcher').value;
+            document.querySelectorAll('.tr').forEach(el => {
+                if(el.getAttribute('data-' + lang)) {
+                    el.innerText = el.getAttribute('data-' + lang);
+                }
+            });
+            // تغيير اتجاه النص إذا عربي
+            document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+            document.body.style.textAlign = (lang === 'ar') ? 'right' : 'left';
+        }
+
+        // 3. نظام مكافحة الـ VPN (Anti-VPN Script)
+        // هذا السكربت يفحص مزود الخدمة، إذا كان من السيرفرات السحابية بيحظر الزائر
+        fetch('https://ipapi.co/json/')
+        .then(response => response.json())
+        .then(data => {
+            const badOrgs = ['digitalocean', 'amazon', 'ovh', 'choopa', 'expressvpn', 'nordvpn', 'hosting', 'datacenter'];
+            if (data.org) {
+                let orgName = data.org.toLowerCase();
+                let isVPN = badOrgs.some(bad => orgName.includes(bad));
+                if (isVPN) {
+                    document.getElementById('vpn-block').style.display = 'block';
+                    document.body.style.overflow = 'hidden'; // منع النزول لتحت
+                }
+            }
+        }).catch(err => console.log("Check Skipped")); // في حال فشل الفحص يكمل عادي
+    </script>
+
+</body>
+                  </html>
